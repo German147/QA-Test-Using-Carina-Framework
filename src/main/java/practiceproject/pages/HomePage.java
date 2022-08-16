@@ -20,6 +20,8 @@ public class HomePage extends AbstractPage {
     @FindBy(linkText = "Dropdown")
     private ExtendedWebElement dropdown;
 
+    @FindBy(linkText = "Forgot Password")
+    private ExtendedWebElement forgotPasswordLink;
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
         return new LoginPage(getDriver());
@@ -33,6 +35,11 @@ public class HomePage extends AbstractPage {
     public DropdownPage clickDropdownLink(){
         dropdown.click();
         return new DropdownPage(getDriver());
+    }
+
+    public ForgotPasswordPage clickForgotPassword(){
+        forgotPasswordLink.click();
+        return new ForgotPasswordPage(getDriver());
     }
 
 
