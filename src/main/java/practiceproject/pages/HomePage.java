@@ -4,7 +4,6 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import practiceproject.pages.InputsPage;
 
 public class HomePage extends AbstractPage {
 
@@ -18,6 +17,9 @@ public class HomePage extends AbstractPage {
     @FindBy(linkText = "Form Authentication")
     private ExtendedWebElement formAuthenticationLink;
 
+    @FindBy(linkText = "Dropdown")
+    private ExtendedWebElement dropdown;
+
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
         return new LoginPage(getDriver());
@@ -26,6 +28,11 @@ public class HomePage extends AbstractPage {
     public InputsPage getInputPage() {
         inputsLink.click();
         return new InputsPage(getDriver());
+    }
+
+    public DropdownPage clickDropdownLink(){
+        dropdown.click();
+        return new DropdownPage(getDriver());
     }
 
 
