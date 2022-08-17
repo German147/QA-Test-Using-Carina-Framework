@@ -29,6 +29,9 @@ public class HomePage extends AbstractPage {
     @FindBy(linkText = "Key Presses")
     private ExtendedWebElement keyPressesLink;
 
+    @FindBy(linkText = "Horizontal Slider")
+    private ExtendedWebElement horizontalSlider;
+
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
         return new LoginPage(getDriver());
@@ -39,24 +42,29 @@ public class HomePage extends AbstractPage {
         return new InputsPage(getDriver());
     }
 
-    public DropdownPage clickDropdownLink(){
+    public DropdownPage clickDropdownLink() {
         dropdown.click();
         return new DropdownPage(getDriver());
     }
 
-    public ForgotPasswordPage clickForgotPassword(){
+    public ForgotPasswordPage clickForgotPassword() {
         forgotPasswordLink.click();
         return new ForgotPasswordPage(getDriver());
     }
 
-    public HoversPage clickOnHoversLink(){
+    public HoversPage clickOnHoversLink() {
         hoversPageLink.click();
         return new HoversPage(getDriver());
     }
 
-    public KeyPressesPage clickOnKeyPressesLink(){
+    public KeyPressesPage clickOnKeyPressesLink() {
         keyPressesLink.click();
         return new KeyPressesPage(getDriver());
+    }
+
+    public HorizontalSlider clickOnHorizontalSlider() {
+        horizontalSlider.click();
+        return new HorizontalSlider(getDriver());
     }
 
 

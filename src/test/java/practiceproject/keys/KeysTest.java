@@ -9,9 +9,11 @@ import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import practiceproject.pages.HomePage;
+import practiceproject.pages.HorizontalSlider;
 import practiceproject.pages.KeyPressesPage;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class KeysTest implements IAbstractTest {
 
@@ -31,6 +33,7 @@ public class KeysTest implements IAbstractTest {
         keyPage.enterText("A" + Keys.SPACE);
         assertEquals(keyPage.resultTextMessage(), "You entered: SPACE", "You enter the wrong key");
     }
+
     @Test
     @MethodOwner(owner = "barreragerman")
     @TestPriority(Priority.P1)
@@ -47,5 +50,22 @@ public class KeysTest implements IAbstractTest {
         keyPage.enterPi();
         assertEquals(keyPage.resultTextMessage(), "You entered: 4", "You enter the wrong key");
 
+    }
+
+    @Test
+    @MethodOwner(owner = "barreragerman")
+    @TestPriority(Priority.P1)
+    @TestLabel(name = "parsingSingleToCarina", value = {"web", "regression"})
+    public void testSendingArrowkeys() {
+        HomePage homePage = new HomePage(getDriver());
+        /**
+         * I must open the page using IAbstractTest and do the assertion
+         */
+        homePage.open();
+        HorizontalSlider sliderPage = homePage.clickOnHorizontalSlider();
+        sliderPage.clickOnSlider();
+        String value = "4";
+        sliderPage.setSliderValue(value);
+        assertEquals(sliderPage.getSliderValue(), value, "Slider value is incorrect");
     }
 }
