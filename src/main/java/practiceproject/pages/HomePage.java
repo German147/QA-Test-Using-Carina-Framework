@@ -22,6 +22,10 @@ public class HomePage extends AbstractPage {
 
     @FindBy(linkText = "Forgot Password")
     private ExtendedWebElement forgotPasswordLink;
+
+    @FindBy(linkText = "Hovers")
+    private ExtendedWebElement hoversPageLink;
+
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
         return new LoginPage(getDriver());
@@ -40,6 +44,11 @@ public class HomePage extends AbstractPage {
     public ForgotPasswordPage clickForgotPassword(){
         forgotPasswordLink.click();
         return new ForgotPasswordPage(getDriver());
+    }
+
+    public HoversPage clickOnHoversLink(){
+        hoversPageLink.click();
+        return new HoversPage(getDriver());
     }
 
 
