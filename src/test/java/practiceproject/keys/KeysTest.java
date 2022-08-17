@@ -31,4 +31,21 @@ public class KeysTest implements IAbstractTest {
         keyPage.enterText("A" + Keys.SPACE);
         assertEquals(keyPage.resultTextMessage(), "You entered: SPACE", "You enter the wrong key");
     }
+    @Test
+    @MethodOwner(owner = "barreragerman")
+    @TestPriority(Priority.P1)
+    @TestLabel(name = "parsingSingleToCarina", value = {"web", "regression"})
+    public void testHoldingKeyValue() {
+        HomePage homePage = new HomePage(getDriver());
+        getDriver().manage().window().fullscreen();
+        /**
+         * I must open the page using IAbstractTest and do the assertion
+         */
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "The page was not open");
+        KeyPressesPage keyPage = homePage.clickOnKeyPressesLink();
+        keyPage.enterPi();
+        assertEquals(keyPage.resultTextMessage(), "You entered: 4", "You enter the wrong key");
+
+    }
 }
