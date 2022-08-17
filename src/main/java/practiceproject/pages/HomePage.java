@@ -26,6 +26,9 @@ public class HomePage extends AbstractPage {
     @FindBy(linkText = "Hovers")
     private ExtendedWebElement hoversPageLink;
 
+    @FindBy(linkText = "Key Presses")
+    private ExtendedWebElement keyPressesLink;
+
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
         return new LoginPage(getDriver());
@@ -49,6 +52,11 @@ public class HomePage extends AbstractPage {
     public HoversPage clickOnHoversLink(){
         hoversPageLink.click();
         return new HoversPage(getDriver());
+    }
+
+    public KeyPressesPage clickOnKeyPressesLink(){
+        keyPressesLink.click();
+        return new KeyPressesPage(getDriver());
     }
 
 
