@@ -36,11 +36,11 @@ public class DropdownPage extends AbstractUIObject {
     }
 
     /**
-     * In order to select an option from the dropdown I have to cast to a WebElement the ExtendedWebElement.
+     * In order to select an option from the dropdown I have to adapt argument to .getElement()
      * @return
      */
     private Select findDropdownElement() {
-        return new Select((WebElement) dropdown);
+        return new Select(dropdown.getElement());
     }
 
 

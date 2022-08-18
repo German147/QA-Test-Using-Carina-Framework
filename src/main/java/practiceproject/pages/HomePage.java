@@ -3,6 +3,7 @@ package practiceproject.pages;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends AbstractPage {
@@ -31,6 +32,9 @@ public class HomePage extends AbstractPage {
 
     @FindBy(linkText = "Horizontal Slider")
     private ExtendedWebElement horizontalSlider;
+
+    @FindBy(linkText = "JavaScript Alerts")
+    private ExtendedWebElement alertLink;
 
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
@@ -65,6 +69,11 @@ public class HomePage extends AbstractPage {
     public HorizontalSlider clickOnHorizontalSlider() {
         horizontalSlider.click();
         return new HorizontalSlider(getDriver());
+    }
+
+    public AlertsPage clickOnAlertLink(){
+        alertLink.click();
+        return new AlertsPage(getDriver());
     }
 
 
