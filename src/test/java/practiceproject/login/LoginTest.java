@@ -5,24 +5,21 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.zebrunner.agent.core.annotation.TestLabel;
-import org.junit.Assert;
 import org.testng.annotations.Test;
 import practiceproject.pages.HomePage;
 import practiceproject.pages.LoginPage;
 import practiceproject.pages.SecureAreaPage;
+import practiceproject.service.IOpenHomePage;
 
 import static org.testng.Assert.*;
 
-public class LoginTest implements IAbstractTest {
+public class LoginTest implements IAbstractTest, IOpenHomePage {
     @Test
     @MethodOwner(owner = "barreragerman")
     @TestPriority(Priority.P1)
     @TestLabel(name = "parsingSingleToCarina", value = {"web", "regression"})
     public void logingTestPage() {
-        HomePage homePage = new HomePage(getDriver());
-        getDriver().manage().window().fullscreen();
-        homePage.open();
-        Assert.assertTrue("The page was not open - barreragerman.info", homePage.isPageOpened());
+        HomePage homePage = openHomePage(getDriver());
         LoginPage loginForm = homePage.clickFormAuthentication();
         loginForm.setUsernameText("tomsmith");
         loginForm.setPasswordText("SuperSecretPassword!");

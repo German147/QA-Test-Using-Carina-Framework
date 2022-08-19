@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class HoversPage extends AbstractUIObject {
 
+    private AbstractUIObject abstractUIObject;
+
     @FindBy(className = "figure")
     private WebElement figureBox;
     @FindBy(className = "figCaption")
@@ -50,6 +52,7 @@ public class HoversPage extends AbstractUIObject {
         public boolean isCaptionDisplayed(){
            return caption.isDisplayed();
         }
+
 
         public String getTitle(){
             return caption.findElement(header.getBy()).getText();

@@ -9,22 +9,19 @@ import org.junit.Assert;
 import org.testng.annotations.Test;
 import practiceproject.pages.HomePage;
 import practiceproject.pages.InputsPage;
+import practiceproject.service.IOpenHomePage;
 
-public class BaseTest implements IAbstractTest {
+public class BaseTest implements IAbstractTest, IOpenHomePage {
 
     @Test
     @MethodOwner(owner = "barreragerman")
     @TestPriority(Priority.P1)
     @TestLabel(name = "parsingSingleToCarina", value = {"web", "regression"})
     public void testBasePage() {
-        HomePage homePage = new HomePage(getDriver());
-        getDriver().manage().window().maximize();
-        homePage.open();
-        Assert.assertTrue("the internet page is not opened", homePage.isPageOpened());
+        HomePage homePage = openHomePage(getDriver());
         homePage.getInputPage();
         InputsPage inputs = new InputsPage(getDriver());
         inputs.fillInTextBox("2");
-        
 
 
     }
