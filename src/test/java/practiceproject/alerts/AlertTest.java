@@ -8,20 +8,17 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.testng.annotations.Test;
 import practiceproject.pages.AlertsPage;
 import practiceproject.pages.HomePage;
+import practiceproject.service.IOpenHomePage;
 
 import static org.testng.Assert.assertEquals;
 
-public class AlertTest implements IAbstractTest {
+public class AlertTest implements IAbstractTest, IOpenHomePage {
     @Test
     @MethodOwner(owner = "barreragerman")
     @TestPriority(Priority.P1)
     @TestLabel(name = "parsingSingleToCarina", value = {"web", "regression"})
     public void testAlerts() {
-        HomePage homePage = new HomePage(getDriver());
-        /**
-         * I must open the page using IAbstractTest and do the assertion
-         */
-        homePage.open();
+        HomePage homePage = openHomePage(getDriver());
         AlertsPage alertsPage = homePage.clickOnAlertLink();
         alertsPage.triggerButton();
         alertsPage.accept();

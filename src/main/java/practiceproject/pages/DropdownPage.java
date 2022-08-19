@@ -36,7 +36,11 @@ public class DropdownPage extends AbstractUIObject {
     }
 
     /**
+<<<<<<< HEAD
      * In order to select an option from the dropdown I have to adapt argument to .getElement()
+=======
+     * In order to select an option from the dropdown I have to adapt argument to .getElement() in order to make it work.
+>>>>>>> DropDownElement
      * @return
      */
     private Select findDropdownElement() {
