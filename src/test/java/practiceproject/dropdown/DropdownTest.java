@@ -9,32 +9,26 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import practiceproject.pages.DropdownPage;
 import practiceproject.pages.HomePage;
+import practiceproject.service.IOpenHomePage;
 
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class DropdownTest implements IAbstractTest {
+public class DropdownTest implements IAbstractTest, IOpenHomePage {
 
     @Test
     @MethodOwner(owner = "barreragerman")
     @TestPriority(Priority.P1)
     @TestLabel(name = "parsingSingleToCarina", value = {"web", "regression"})
     public void dropdownTest() {
-        HomePage homePage = new HomePage(getDriver());
-        getDriver().manage().window().fullscreen();
-        /**
-         * I must open the page using IAbstractTest and do the assertion
-         */
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "The page was not open");
-
+        HomePage homePage = openHomePage(getDriver());
         DropdownPage dropdownPage = homePage.clickDropdownLink();
         String text = "Option 2";
-       dropdownPage.selectFromDropdown(text);
+        dropdownPage.selectFromDropdown(text);
         List<String> selectedOptions = dropdownPage.getSelectedOptions();
-        assertEquals(selectedOptions.size(),1,"Incorrect number of selections");
-        assertTrue(selectedOptions.contains(text),"The option was not selected");
+        assertEquals(selectedOptions.size(), 1, "Incorrect number of selections");
+        assertTrue(selectedOptions.contains(text), "The option was not selected");
     }
 }
