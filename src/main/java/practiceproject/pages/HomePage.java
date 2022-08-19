@@ -36,6 +36,9 @@ public class HomePage extends AbstractPage {
     @FindBy(linkText = "JavaScript Alerts")
     private ExtendedWebElement alertLink;
 
+    @FindBy(linkText = "File Upload")
+    private ExtendedWebElement fileUploadLink;
+
     public LoginPage clickFormAuthentication() {
         formAuthenticationLink.click();
         return new LoginPage(getDriver());
@@ -74,6 +77,11 @@ public class HomePage extends AbstractPage {
     public AlertsPage clickOnAlertLink(){
         alertLink.click();
         return new AlertsPage(getDriver());
+    }
+
+    public FileUploadPage clickOnFileUpload(){
+        fileUploadLink.click();
+        return new FileUploadPage(getDriver());
     }
 
 
